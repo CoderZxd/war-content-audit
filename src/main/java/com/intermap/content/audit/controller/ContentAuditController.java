@@ -1,7 +1,6 @@
 package com.intermap.content.audit.controller;
 
-import com.intermap.content.audit.entity.Plugin;
-import com.intermap.content.audit.service.IPluginService;
+import com.intermap.content.audit.service.IContentAuditService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ContentAuditController {
 
     @Autowired
-    private IPluginService pluginService;
+    private IContentAuditService contentAuditService;
 
     @RequestMapping("/")
     public Object home() {
-        return pluginService.getAllPlugins(new Plugin());
+        return "Hello world!";
     }
 }

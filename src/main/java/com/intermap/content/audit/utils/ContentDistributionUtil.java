@@ -2,6 +2,8 @@ package com.intermap.content.audit.utils;
 
 import com.intermap.content.audit.entity.DataRecord;
 import com.intermap.content.audit.service.IContentAuditService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,6 +17,8 @@ import java.util.*;
  * @Date:Created in 16:05 2019/3/18.
  */
 public class ContentDistributionUtil {
+
+    private static Logger logger = LoggerFactory.getLogger(ContentDistributionUtil.class);
 
     private static IContentAuditService contentAuditService = SpringBeanUtil.getBean(IContentAuditService.class);
 
@@ -55,23 +59,28 @@ public class ContentDistributionUtil {
      * @return com.intermap.content.audit.entity.DataRecord
      */
     public static DataRecord getDataRecordFromDb(){
-        if(recordsList.isEmpty()){
-            synchronized (ContentDistributionUtil.class){
-                if(recordsList.isEmpty()){
-                    Map<String,Object> params = new HashMap<String,Object>(16);
-                    params.put("tableName",getTableName());
-                    params.put("sysStatus",SYS_STATUS);
-                    params.put("limitNum",LIMITNUM);
-                    params.put("status",WAITTING_AUTID_STATUS);
-                    recordsList = contentAuditService.getDataRecordsListForDistribution(params);
+        try {
+            if(recordsList.isEmpty()){
+                synchronized (ContentDistributionUtil.class){
+                    if(recordsList.isEmpty()){
+                        Map<String,Object> params = new HashMap<String,Object>(16);
+                        params.put("tableName",getTableName());
+                        params.put("sysStatus",SYS_STATUS);
+                        params.put("limitNum",LIMITNUM);
+                        params.put("status",WAITTING_AUTID_STATUS);
+                        recordsList = contentAuditService.getDataRecordsListForDistribution(params);
+                    }
                 }
             }
-        }
-        if(!recordsList.isEmpty()){
-            DataRecord dataRecord = recordsList.remove(0);
-            if(dataRecord != null && dataRecord.getDataId() != null){
-                return dataRecord;
+            if(!recordsList.isEmpty()){
+                DataRecord dataRecord = recordsList.remove(0);
+                if(dataRecord != null && dataRecord.getDataId() != null){
+                    logger.debug("dataRecord==="+dataRecord.toString());
+                    return dataRecord;
+                }
             }
+        }catch (Exception e){
+            logger.error("获取data records异常。异常信息为:"+e.getMessage());
         }
         return null;
     }

@@ -46,17 +46,17 @@
     from data_record_20190318
     where data_id = #{dataId,jdbcType=BIGINT}
   </select>
-  <select id="getDataRecordsListForDistribution" parameterType="java.util.Map" resultType="com.intermap.content.audit.entity.DataRecord">
+  <select id="getDataRecordsListForDistribution" parameterType="java.util.Map" resultMap="BaseResultMap" statementType="STATEMENT">
     select
     <include refid="Base_Column_List" />
-    from #{tableName,jdbcType=VARCHAR} r
-    where r.sys_status = #{sysStatus,jdbcType=TINYINT} and r.status != #{status,jdbcType=TINYINT} limit #{limitNum,jdbcType=INTEGER}
+    from ${tableName}
+    where sys_status = ${sysStatus} and status != ${status} limit ${limitNum}
   </select>
-  <update id="updateDataRecordsToWaittingAuditStatus" parameterType="java.util.Map">
-    UPDATE #{tableName,jdbcType=VARCHAR} r SET r.status = #{status,jdbcType=TINYINT}
-    where r.data_id in
+  <update id="updateDataRecordsToWaittingAuditStatus" parameterType="java.util.Map" statementType="STATEMENT">
+    UPDATE ${tableName} SET status = ${status}
+    where data_id in
     <foreach  item="item" collection="ids" index="index" open="(" separator="," close=")">
-      #{item,jdbcType=BIGINT}
+      ${item}
     </foreach>
   </update>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

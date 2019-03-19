@@ -1,5 +1,6 @@
 package com.intermap.content.audit.utils;
 
+import com.alibaba.druid.util.HttpClientUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -14,7 +15,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 
-public class HttpClientUtils {
+public class HttpClientUtil {
 
     private static final Log logger = LogFactory.getLog(HttpClientUtils.class);
     /**

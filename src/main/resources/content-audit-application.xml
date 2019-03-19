@@ -9,7 +9,7 @@
        default-lazy-init="false">
 
     <context:annotation-config/>
-    <context:component-scan base-package="com.intermap.content.audit.service.*"/>
+    <context:component-scan base-package="com.intermap.content.audit.service.impl.*"/>
     <aop:config proxy-target-class="false"/>
     <import resource="classpath:/static/content-audit-datasource.xml"/>
 </beans>

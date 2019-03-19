@@ -1,6 +1,8 @@
 package com.intermap.content.audit.controller;
 
+import com.intermap.content.audit.entity.DataRecord;
 import com.intermap.content.audit.service.IContentAuditService;
+import com.intermap.content.audit.utils.ContentDistributionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,7 @@ public class ContentAuditController {
 
     @RequestMapping("/")
     public Object home() {
-        return "Hello world!";
+        DataRecord dataRecord = ContentDistributionUtil.getDataRecordFromDb();
+        return dataRecord;
     }
 }

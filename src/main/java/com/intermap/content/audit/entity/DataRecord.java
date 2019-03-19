@@ -1,5 +1,7 @@
 package com.intermap.content.audit.entity;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.Date;
 
 public class DataRecord {
@@ -661,5 +663,10 @@ public class DataRecord {
      */
     public void setExtension(String extension) {
         this.extension = extension == null ? null : extension.trim();
+    }
+
+    @Override
+    public String toString(){
+        return JSON.toJSONString(this);
     }
 }

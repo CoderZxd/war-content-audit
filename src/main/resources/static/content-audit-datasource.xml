@@ -16,14 +16,14 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:com/goodview/goodview/dao/mybatis/*.xml"/>
+        <property name="mapperLocations" value="classpath:com/intermap/content/audit/dao/mybatis/*.xml"/>
     </bean>
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.goodview.goodview.dao.**"/>
+        <property name="basePackage" value="com.intermap.content.audit.dao.**"/>
         <property name="sqlSessionTemplateBeanName" value="sqlSession"/>
     </bean>
 

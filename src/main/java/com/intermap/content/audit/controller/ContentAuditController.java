@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @EnableAutoConfiguration
+@RequestMapping("/")
 public class ContentAuditController {
 
     private static Logger logger = LoggerFactory.getLogger(ContentAuditController.class);
@@ -26,9 +27,9 @@ public class ContentAuditController {
     @Autowired
     private IContentAuditService contentAuditService;
 
-    @RequestMapping("/")
-    public Object home() {
-        logger.info("test!!!!!!!!!!!!!!!!!!!!!!!!!");
+    @RequestMapping("/getOneDataRecord")
+    public Object getDataRecord() {
+        logger.info("用户拉取data record!");
         DataRecord dataRecord = ContentDistributionUtil.getDataRecordFromDb();
         return dataRecord;
     }

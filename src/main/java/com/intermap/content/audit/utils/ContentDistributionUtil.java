@@ -75,7 +75,7 @@ public class ContentDistributionUtil {
             if(!recordsList.isEmpty()){
                 DataRecord dataRecord = recordsList.remove(0);
                 if(dataRecord != null && dataRecord.getDataId() != null){
-                    logger.debug("dataRecord==="+dataRecord.toString());
+                    logger.info("dataRecord==="+dataRecord.toString());
                     return dataRecord;
                 }
             }

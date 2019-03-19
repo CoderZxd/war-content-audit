@@ -11,5 +11,6 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.intermap.content.audit.service.impl.*"/>
     <aop:config proxy-target-class="false"/>
+    <bean id="springBeanUtil" class="com.intermap.content.audit.utils.SpringBeanUtil"/>
     <import resource="classpath:/static/content-audit-datasource.xml"/>
 </beans>

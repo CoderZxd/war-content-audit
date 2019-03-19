@@ -2,7 +2,6 @@ package com.intermap.content.audit.utils;
 
 import com.intermap.content.audit.entity.DataRecord;
 import com.intermap.content.audit.service.IContentAuditService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -17,8 +16,7 @@ import java.util.*;
  */
 public class ContentDistributionUtil {
 
-    @Autowired
-    private static IContentAuditService contentAuditService;
+    private static IContentAuditService contentAuditService = SpringBeanUtil.getBean(IContentAuditService.class);
 
     /**
      * 代表机器审核不确定的状态

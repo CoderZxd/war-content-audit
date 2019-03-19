@@ -1,6 +1,7 @@
 package com.intermap.content.audit.controller;
 
 import com.intermap.content.audit.entity.DataRecord;
+import com.intermap.content.audit.entity.ResponseDto;
 import com.intermap.content.audit.service.IContentAuditService;
 import com.intermap.content.audit.utils.ContentDistributionUtil;
 import org.slf4j.Logger;
@@ -28,9 +29,9 @@ public class ContentAuditController {
     private IContentAuditService contentAuditService;
 
     @RequestMapping("/getOneDataRecord")
-    public Object getDataRecord() {
+    public ResponseDto getDataRecord() {
         logger.info("用户拉取data record!");
         DataRecord dataRecord = ContentDistributionUtil.getDataRecordFromDb();
-        return dataRecord;
+        return ResponseDto.success(dataRecord);
     }
 }

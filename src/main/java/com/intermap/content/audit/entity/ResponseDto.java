@@ -1,6 +1,8 @@
 package com.intermap.content.audit.entity;
 
+import com.alibaba.fastjson.JSON;
 import lombok.Data;
+import org.springframework.http.HttpStatus;
 
 /**
  * @Project war-content-audit
@@ -25,5 +27,24 @@ public class ResponseDto {
     /**
      * 接口返回结果，json 格式，详见每个接口的定义说明。
      */
-    private Object result;
+    private Object data;
+
+    @Override
+    public String toString(){
+        return JSON.toJSONString(this);
+    }
+
+    public ResponseDto(int code,String msg,Object data){
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
+    public static ResponseDto success(Object data) {
+        return new ResponseDto(HttpStatus.OK.value(), HttpStatus.OK.getReasonPhrase(), data);
+    }
+
+    public static ResponseDto error(HttpStatus httpStatus) {
+        return new ResponseDto(httpStatus.value(), httpStatus.getReasonPhrase(), null);
+    }
 }

@@ -57,4 +57,6 @@ public interface DataRecordDao {
     List<DataRecord> getDataRecordsListForDistribution(Map<String,Object> params);
 
     int updateDataRecordsToWaittingAuditStatus(Map<String,Object> params);
+
+    Map getDataInfoByDataRecord(Map<String,Object> params);
 }

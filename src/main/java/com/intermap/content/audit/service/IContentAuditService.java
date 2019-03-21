@@ -1,10 +1,5 @@
 package com.intermap.content.audit.service;
 
-import com.intermap.content.audit.entity.DataRecord;
-
-import java.util.List;
-import java.util.Map;
-
 /**
  * @Project war-content-audit
  * @Package com.intermap.content.audit.service
@@ -17,12 +12,12 @@ public interface IContentAuditService {
     /**
      * @FileName IContentAuditService.java
      * @ClassName IContentAuditService
-     * @MethodName getDataRecordsListForDistribution
-     * @Desc 获取分发的Data record
+     * @MethodName getDataRecordFromDb
+     * @Desc 从数据库获取data record
      * @author zouxiaodong
-     * @date 2019/3/18 16:27
-     * @Params [params]
-     * @return java.util.List<com.intermap.content.audit.entity.DataRecord>
+     * @date 2019/3/21 14:07
+     * @Params []
+     * @return java.lang.Object
      */
-    List<DataRecord> getDataRecordsListForDistribution(Map<String,Object> params);
+    Object getDataRecordFromDb();
 }

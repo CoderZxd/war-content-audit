@@ -1,9 +1,7 @@
 package com.intermap.content.audit.controller;
 
-import com.intermap.content.audit.entity.DataRecord;
 import com.intermap.content.audit.entity.ResponseDto;
 import com.intermap.content.audit.service.IContentAuditService;
-import com.intermap.content.audit.utils.ContentDistributionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +29,7 @@ public class ContentAuditController {
     @RequestMapping("/getOneDataRecord")
     public ResponseDto getDataRecord() {
         logger.info("用户拉取data record!");
-        DataRecord dataRecord = ContentDistributionUtil.getDataRecordFromDb();
+        Object dataRecord = contentAuditService.getDataRecordFromDb();
         return ResponseDto.success(dataRecord);
     }
 }

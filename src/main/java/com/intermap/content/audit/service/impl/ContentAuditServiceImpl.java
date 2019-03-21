@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @Project war-content-audit
@@ -28,6 +28,33 @@ public class ContentAuditServiceImpl implements IContentAuditService {
     private DataRecordDao dataRecordDao;
 
     /**
+     * 代表机器审核不确定的状态
+     */
+    private static Integer SYS_STATUS = 1;
+
+    /**
+     * 等待被人工审核状态
+     */
+    private static Integer WAITTING_AUTID_STATUS = 101;
+
+    /**
+     * 每次获取的num数
+     */
+    private static Integer LIMITNUM = 20;
+
+    /**
+     * data_record表名前缀
+     */
+    private static String TABLE_NAME_PREFIX = "data_record_";
+
+
+    /**
+     * 存储缓存的db数据
+     */
+    private static List<DataRecord> recordsList = Collections.synchronizedList(new ArrayList<DataRecord>(20));
+
+
+    /**
      * @return java.util.List<com.intermap.content.audit.entity.DataRecord>
      * @FileName IContentAuditService.java
      * @ClassName IContentAuditService
@@ -37,8 +64,7 @@ public class ContentAuditServiceImpl implements IContentAuditService {
      * @date 2019/3/18 16:27
      * @Params []
      */
-    @Override
-    public List<DataRecord> getDataRecordsListForDistribution(Map<String,Object> params) {
+    private List<DataRecord> getDataRecordsListForDistribution(Map<String,Object> params) {
         List<DataRecord> records = new ArrayList<DataRecord>(10);
         try {
             records = dataRecordDao.getDataRecordsListForDistribution(params);
@@ -58,5 +84,64 @@ public class ContentAuditServiceImpl implements IContentAuditService {
             logger.error("获取分发的Data record,并将status状态修改为人工待审核状态(status=101)异常.异常信息为:"+e.getMessage());
         }
         return records;
+    }
+
+
+    /**
+     * @FileName ContentAuditServiceImpl.java
+     * @ClassName ContentAuditServiceImpl
+     * @MethodName getDataRecordFromDb
+     * @Desc 从数据库获取data record
+     * @author zouxiaodong
+     * @date 2019/3/21 14:08
+     * @Params []
+     * @return java.lang.Object
+     */
+    @Override
+    public Object getDataRecordFromDb() {
+        try {
+            if(recordsList.isEmpty()){
+                synchronized (ContentAuditServiceImpl.class){
+                    if(recordsList.isEmpty()){
+                        Map<String,Object> params = new HashMap<String,Object>(16);
+                        params.put("tableName",getTableName());
+                        params.put("sysStatus",SYS_STATUS);
+                        params.put("limitNum",LIMITNUM);
+                        params.put("status",WAITTING_AUTID_STATUS);
+                        recordsList = getDataRecordsListForDistribution(params);
+                    }
+                }
+            }
+            if(!recordsList.isEmpty()){
+                DataRecord dataRecord = recordsList.remove(0);
+                if(dataRecord != null && dataRecord.getDataId() != null){
+                    logger.info("dataRecord==="+dataRecord.toString());
+                    Map<String,Object> params = new HashMap<String,Object>(16);
+                    params.put("tableName",getTableName());
+                    params.put("dataId",dataRecord.getDataId());
+                    Map<String,String> data = dataRecordDao.getDataInfoByDataRecord(params);
+                    logger.info("data==="+data.toString());
+                    return data;
+                }
+            }
+        }catch (Exception e){
+            logger.error("获取data records异常。异常信息为:"+e.getMessage());
+        }
+        return null;
+    }
+
+    /**
+     * @FileName ContentAuditServiceImpl.java
+     * @ClassName ContentAuditServiceImpl
+     * @MethodName getTableName
+     * @Desc 根据当前日期获取今天的data record表名
+     * @author zouxiaodong
+     * @date 2019/3/21 14:08
+     * @Params []
+     * @return java.lang.String
+     */
+    private String getTableName(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        return new StringBuffer(TABLE_NAME_PREFIX).append(dateFormat.format(new Date())).toString();
     }
 }

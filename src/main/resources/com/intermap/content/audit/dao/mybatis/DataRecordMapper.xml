@@ -59,6 +59,12 @@
       ${item}
     </foreach>
   </update>
+  <select id="getDataInfoByDataRecord" parameterType="java.util.Map" resultType="java.util.Map" statementType="STATEMENT">
+    select rec.id,rec.uid,rec.ip,rec.device,rec.publish_date,a.app_name,p.name,rec.created,rec.version,rec.sys_status,rec.sys_policy,
+    rec.data_type,rec.msg_type,rec.nick_name,rec.user_level,res.order,res.type,res.content
+    from ${tableName} rec,data_resource res,code_platform p,code_app a
+    where rec.data_id = res.data_id and rec.app_id = a.app_id and a.platform_id = p.id and rec.data_id = ${dataId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--
       WARNING - @mbg.generated

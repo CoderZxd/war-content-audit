@@ -35,6 +35,8 @@ CREATE TABLE `code_platform` (
 -- 请执行以下语句:
 -- show variables like 'sql_mode';
 -- set session sql_mode='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+-- 如果执行查询时提示:***** in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by,则执行如下SQL:
+-- set session sql_mode='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 -- ----------------------------
 DROP TABLE IF EXISTS `data_record_20190318`;
 CREATE TABLE `data_record_20190318` (

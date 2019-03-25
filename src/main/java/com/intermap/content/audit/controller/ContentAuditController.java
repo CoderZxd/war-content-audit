@@ -26,10 +26,10 @@ public class ContentAuditController {
     @Autowired
     private IContentAuditService contentAuditService;
 
-    @RequestMapping("/getOneDataRecord")
-    public ResponseDto getDataRecord() {
+    @RequestMapping("/getDataForAudit")
+    public ResponseDto getDataForAudit() {
         logger.info("用户拉取data record!");
-        Object dataRecord = contentAuditService.getDataRecordFromDb();
+        Object dataRecord = contentAuditService.getDataForAuditFromDb();
         return ResponseDto.success(dataRecord);
     }
 }

@@ -90,15 +90,15 @@ public class ContentAuditServiceImpl implements IContentAuditService {
     /**
      * @FileName ContentAuditServiceImpl.java
      * @ClassName ContentAuditServiceImpl
-     * @MethodName getDataRecordFromDb
-     * @Desc 从数据库获取data record
+     * @MethodName getDataForAuditFromDb
+     * @Desc 从数据库获取data进行审核
      * @author zouxiaodong
      * @date 2019/3/21 14:08
      * @Params []
      * @return java.lang.Object
      */
     @Override
-    public Object getDataRecordFromDb() {
+    public Object getDataForAuditFromDb() {
         try {
             if(recordsList.isEmpty()){
                 synchronized (ContentAuditServiceImpl.class){

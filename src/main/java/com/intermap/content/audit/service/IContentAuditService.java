@@ -12,12 +12,12 @@ public interface IContentAuditService {
     /**
      * @FileName IContentAuditService.java
      * @ClassName IContentAuditService
-     * @MethodName getDataRecordFromDb
-     * @Desc 从数据库获取data record
+     * @MethodName getDataForAuditFromDb
+     * @Desc 从数据库获取data进行审核
      * @author zouxiaodong
      * @date 2019/3/21 14:07
      * @Params []
      * @return java.lang.Object
      */
-    Object getDataRecordFromDb();
+    Object getDataForAuditFromDb();
 }

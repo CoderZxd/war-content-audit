@@ -18,6 +18,7 @@ public class ConstantUtil {
     public static String TABLE_NAME_PREFIX = "data_record_";
 
     /**
+     * TODO:需要根据实际情况修改
      * Data_record表中代表机器审核不确定的状态
      */
     public static Integer SYS_STATUS = 1;

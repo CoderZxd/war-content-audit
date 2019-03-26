@@ -58,3 +58,5 @@
 2019-03-26 14:22:17.793  INFO 2824 --- [http-nio-8080-exec-6] c.i.c.a.s.impl.ContentAuditServiceImpl   : data==={created=2019-03-18 15:31:52.0, ip=127.0.0.1, type=2, version=v1.0.0, content=https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1258374994,840989973&fm=26&gp=0.jpg, uid=mytest, app_name=今日头条, data_id=1, nick_name=nick_name, name=字节跳动, data_type=1, msg_type=1, user_level=1, id=10001, device=iphone 6s, publish_date=2019-03-18 15:31:13.0, sys_status=1, sys_policy=sysPolicy, order=1}
 2019-03-26 14:22:23.247  INFO 2824 --- [http-nio-8080-exec-3] c.i.c.a.c.ContentAuditController         : 更新data record!params={operator=10001, dataId=1, code=N}
 2019-03-26 14:22:23.281  INFO 2824 --- [http-nio-8080-exec-3] c.i.c.a.c.ContentAuditController         : 更新的记录条数为:1
+2019-03-26 14:30:00.834  INFO 2824 --- [http-nio-8080-exec-4] c.i.c.a.c.ContentAuditController         : 用户拉取data record!
+2019-03-26 14:30:08.426  INFO 2824 --- [http-nio-8080-exec-1] c.i.c.a.c.ContentAuditController         : 用户拉取data record!

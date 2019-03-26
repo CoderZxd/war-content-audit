@@ -1,5 +1,7 @@
 package com.intermap.content.audit.service;
 
+import java.util.Map;
+
 /**
  * @Project war-content-audit
  * @Package com.intermap.content.audit.service
@@ -20,4 +22,6 @@ public interface IContentAuditService {
      * @return java.lang.Object
      */
     Object getDataForAuditFromDb();
+
+    Integer updateDataForAudit(Map<String,Object> params);
 }

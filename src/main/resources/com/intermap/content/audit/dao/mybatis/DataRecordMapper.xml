@@ -50,14 +50,30 @@
     select
     <include refid="Base_Column_List" />
     from ${tableName}
-    where sys_status = ${sysStatus} and status != ${status} limit ${limitNum}
+    where sys_status = ${sysStatus} and status NOT IN
+    <foreach  item="item" collection="excludeStatuses" index="index" open="(" separator="," close=")">
+      ${item}
+    </foreach>
+    limit ${limitNum}
   </select>
   <update id="updateDataRecordsToWaittingAuditStatus" parameterType="java.util.Map" statementType="STATEMENT">
-    UPDATE ${tableName} SET status = ${status}
+    UPDATE ${tableName} SET status = ${waitingAuditStatus}
     where data_id in
     <foreach  item="item" collection="ids" index="index" open="(" separator="," close=")">
       ${item}
     </foreach>
+  </update>
+  <update id="updateDataForAudit" parameterType="java.util.Map" statementType="STATEMENT">
+    UPDATE ${tableName}
+    <set>
+      <if test="status != null">
+        status = ${status},
+      </if>
+      <if test="operator != null">
+        operator = ${operator},
+      </if>
+    </set>
+    where data_id = ${dataId}
   </update>
   <select id="getDataInfoByDataRecord" parameterType="java.util.Map" resultType="java.util.Map" statementType="STATEMENT">
     select rec.data_id,rec.id,rec.uid,rec.ip,rec.device,rec.publish_date,a.app_name,p.name,rec.created,rec.version,rec.sys_status,rec.sys_policy,

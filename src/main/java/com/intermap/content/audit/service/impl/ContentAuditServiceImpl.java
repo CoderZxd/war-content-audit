@@ -3,14 +3,15 @@ package com.intermap.content.audit.service.impl;
 import com.intermap.content.audit.dao.DataRecordDao;
 import com.intermap.content.audit.entity.DataRecord;
 import com.intermap.content.audit.service.IContentAuditService;
+import com.intermap.content.audit.utils.CommonUtil;
+import com.intermap.content.audit.utils.ConstantUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
+
 
 /**
  * @Project war-content-audit
@@ -26,27 +27,6 @@ public class ContentAuditServiceImpl implements IContentAuditService {
 
     @Autowired
     private DataRecordDao dataRecordDao;
-
-    /**
-     * 代表机器审核不确定的状态
-     */
-    private static Integer SYS_STATUS = 1;
-
-    /**
-     * 等待被人工审核状态
-     */
-    private static Integer WAITTING_AUTID_STATUS = 101;
-
-    /**
-     * 每次获取的num数
-     */
-    private static Integer LIMITNUM = 20;
-
-    /**
-     * data_record表名前缀
-     */
-    private static String TABLE_NAME_PREFIX = "data_record_";
-
 
     /**
      * 存储缓存的db数据
@@ -104,10 +84,11 @@ public class ContentAuditServiceImpl implements IContentAuditService {
                 synchronized (ContentAuditServiceImpl.class){
                     if(recordsList.isEmpty()){
                         Map<String,Object> params = new HashMap<String,Object>(16);
-                        params.put("tableName",getTableName());
-                        params.put("sysStatus",SYS_STATUS);
-                        params.put("limitNum",LIMITNUM);
-                        params.put("status",WAITTING_AUTID_STATUS);
+                        params.put("tableName", CommonUtil.getTableName());
+                        params.put("sysStatus", ConstantUtil.SYS_STATUS);
+                        params.put("limitNum",ConstantUtil.LIMITNUM);
+                        params.put("excludeStatuses",ConstantUtil.NOT_WAITTING_AUTID_STATUS);
+                        params.put("waitingAuditStatus",ConstantUtil.WAITTING_AUTID_STATUS);
                         recordsList = getDataRecordsListForDistribution(params);
                     }
                 }
@@ -117,7 +98,7 @@ public class ContentAuditServiceImpl implements IContentAuditService {
                 if(dataRecord != null && dataRecord.getDataId() != null){
                     logger.info("dataRecord==="+dataRecord.toString());
                     Map<String,Object> params = new HashMap<String,Object>(16);
-                    params.put("tableName",getTableName());
+                    params.put("tableName",CommonUtil.getTableName());
                     params.put("dataId",dataRecord.getDataId());
                     Map<String,String> data = dataRecordDao.getDataInfoByDataRecord(params);
                     logger.info("data==="+data.toString());
@@ -130,18 +111,13 @@ public class ContentAuditServiceImpl implements IContentAuditService {
         return null;
     }
 
-    /**
-     * @FileName ContentAuditServiceImpl.java
-     * @ClassName ContentAuditServiceImpl
-     * @MethodName getTableName
-     * @Desc 根据当前日期获取今天的data record表名
-     * @author zouxiaodong
-     * @date 2019/3/21 14:08
-     * @Params []
-     * @return java.lang.String
-     */
-    private String getTableName(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-        return new StringBuffer(TABLE_NAME_PREFIX).append(dateFormat.format(new Date())).toString();
+    @Override
+    public Integer updateDataForAudit(Map<String, Object> params) {
+        try {
+            return dataRecordDao.updateDataForAudit(params);
+        }catch (Exception e){
+            logger.error("更新data record(data_id="+params.get("dataId")+")审核状态异常。异常信息为:"+e.getMessage());
+        }
+        return 0;
     }
 }

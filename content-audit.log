@@ -1,29 +1,32 @@
-2019-03-25 10:32:58.104  INFO 6168 --- [main] c.i.content.audit.GoodviewApplication    : Starting GoodviewApplication on JISHU019 with PID 6168 (E:\Projects\war-content-audit\target\classes started by zouxiaodong in E:\Projects\war-content-audit)
-2019-03-25 10:32:58.211  INFO 6168 --- [main] c.i.content.audit.GoodviewApplication    : No active profile set, falling back to default profiles: default
-2019-03-25 10:33:00.496  WARN 6168 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.intermap.content.audit.controller, com.intermap.content.audit]' package. Please check your configuration.
-2019-03-25 10:33:02.050  INFO 6168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2019-03-25 10:33:02.134  INFO 6168 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2019-03-25 10:33:02.135  INFO 6168 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
-2019-03-25 10:33:02.159  INFO 6168 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\java\jdk1.8.0_112\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\java\Git\cmd;D:\Program Files\TortoiseGit\bin;D:\Program Files\Anaconda2;D:\Program Files\Anaconda2\Scripts;D:\Program Files\Anaconda2\Library\bin;D:\Program Files\apache-maven-3.3.9\bin;C:\java\jdk1.8.0_112\bin;C:\java\jdk1.8.0_112\jre\bin;C:\Program Files\nodejs\;C:\Users\zouxiaodong\AppData\Roaming\npm;.]
-2019-03-25 10:33:02.505  INFO 6168 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2019-03-25 10:33:02.505  INFO 6168 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4043 ms
-2019-03-25 10:33:04.131  INFO 6168 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2019-03-25 10:33:04.843  INFO 6168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2019-03-25 10:33:04.848  INFO 6168 --- [main] c.i.content.audit.GoodviewApplication    : Started GoodviewApplication in 7.735 seconds (JVM running for 13.341)
-2019-03-25 11:06:56.848  INFO 6168 --- [http-nio-8080-exec-9] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-03-25 11:06:56.849  INFO 6168 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2019-03-25 11:06:56.860  INFO 6168 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
-2019-03-25 11:33:01.799  INFO 6168 --- [http-nio-8080-exec-10] c.i.c.a.c.ContentAuditController         : 用户拉取data record!
-2019-03-25 11:33:01.920  INFO 6168 --- [http-nio-8080-exec-10] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2019-03-25 11:33:02.594 ERROR 6168 --- [http-nio-8080-exec-10] c.i.c.a.s.impl.ContentAuditServiceImpl   : 获取分发的Data record,并将status状态修改为人工待审核状态(status=101)异常.异常信息为:
-### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'contentaudit.data_record_20190325' doesn't exist
+2019-03-26 11:22:25.304  INFO 5508 --- [main] c.i.content.audit.GoodviewApplication    : Starting GoodviewApplication on JISHU019 with PID 5508 (E:\Projects\war-content-audit\target\classes started by zouxiaodong in E:\Projects\war-content-audit)
+2019-03-26 11:22:25.474  INFO 5508 --- [main] c.i.content.audit.GoodviewApplication    : No active profile set, falling back to default profiles: default
+2019-03-26 11:22:27.456  WARN 5508 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.intermap.content.audit.controller, com.intermap.content.audit]' package. Please check your configuration.
+2019-03-26 11:22:29.572  INFO 5508 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-03-26 11:22:29.622  INFO 5508 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-26 11:22:29.622  INFO 5508 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-03-26 11:22:29.639  INFO 5508 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\java\jdk1.8.0_112\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\java\Git\cmd;D:\Program Files\TortoiseGit\bin;D:\Program Files\Anaconda2;D:\Program Files\Anaconda2\Scripts;D:\Program Files\Anaconda2\Library\bin;D:\Program Files\apache-maven-3.3.9\bin;C:\java\jdk1.8.0_112\bin;C:\java\jdk1.8.0_112\jre\bin;C:\Program Files\nodejs\;C:\Users\zouxiaodong\AppData\Roaming\npm;.]
+2019-03-26 11:22:30.236  INFO 5508 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-26 11:22:30.236  INFO 5508 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4685 ms
+2019-03-26 11:22:31.247  INFO 5508 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-26 11:22:31.699  INFO 5508 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-03-26 11:22:31.774  INFO 5508 --- [main] c.i.content.audit.GoodviewApplication    : Started GoodviewApplication in 7.339 seconds (JVM running for 8.269)
+2019-03-26 11:41:54.767  INFO 5508 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-26 11:41:54.768  INFO 5508 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-03-26 11:41:54.785  INFO 5508 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2019-03-26 11:41:54.887  INFO 5508 --- [http-nio-8080-exec-4] c.i.c.a.c.ContentAuditController         : 用户拉取data record!
+2019-03-26 11:41:55.030  INFO 5508 --- [http-nio-8080-exec-4] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-03-26 11:41:55.696 ERROR 5508 --- [http-nio-8080-exec-4] c.i.c.a.s.impl.ContentAuditServiceImpl   : 获取分发的Data record,并将status状态修改为人工待审核状态(status=101)异常.异常信息为:
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'contentaudit.data_record_20190326' doesn't exist
 ### The error may exist in file [E:\Projects\war-content-audit\target\classes\com\intermap\content\audit\dao\mybatis\DataRecordMapper.xml]
 ### The error may involve com.intermap.content.audit.dao.DataRecordDao.getDataRecordsListForDistribution
 ### The error occurred while executing a query
-### SQL: select                data_id, id, uid, ip, device, publish_date, app_id, digest, updated, created, version,      sys_status, status, sys_policy, operator, data_type, msg_type, nick_name, user_level,      extension         from data_record_20190325     where sys_status = 1 and status != 101 limit 20
-### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'contentaudit.data_record_20190325' doesn't exist
-; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'contentaudit.data_record_20190325' doesn't exist
-2019-03-25 11:39:42.585  INFO 6168 --- [http-nio-8080-exec-7] c.i.c.a.c.ContentAuditController         : 用户拉取data record!
-2019-03-25 11:39:42.789  INFO 6168 --- [http-nio-8080-exec-7] c.i.c.a.s.impl.ContentAuditServiceImpl   : records.size()=1,update nums=1
-2019-03-25 11:39:42.905  INFO 6168 --- [http-nio-8080-exec-7] c.i.c.a.s.impl.ContentAuditServiceImpl   : dataRecord==={"appId":1,"created":1552894312000,"dataId":1,"dataType":1,"device":"iphone 6s","digest":"abcdefghijklmnopqrstuvwxyzabcdef","id":"10001","ip":"127.0.0.1","msgType":1,"nickName":"nick_name","operator":1001,"publishDate":1552894273000,"status":1,"sysPolicy":"sysPolicy","sysStatus":1,"uid":"mytest","updated":1553455978000,"userLevel":1,"version":"v1.0.0"}
-2019-03-25 11:39:42.938  INFO 6168 --- [http-nio-8080-exec-7] c.i.c.a.s.impl.ContentAuditServiceImpl   : data==={created=2019-03-18 15:31:52.0, ip=127.0.0.1, type=2, version=v1.0.0, content=https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1258374994,840989973&fm=26&gp=0.jpg, uid=mytest, app_name=今日头条, data_id=1, nick_name=nick_name, name=字节跳动, data_type=1, msg_type=1, user_level=1, id=10001, device=iphone 6s, publish_date=2019-03-18 15:31:13.0, sys_status=1, sys_policy=sysPolicy, order=1}
+### SQL: select                data_id, id, uid, ip, device, publish_date, app_id, digest, updated, created, version,      sys_status, status, sys_policy, operator, data_type, msg_type, nick_name, user_level,      extension         from data_record_20190326     where sys_status = 1 and status NOT IN      (         1      ,        2      ,        101      )      limit 20
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'contentaudit.data_record_20190326' doesn't exist
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'contentaudit.data_record_20190326' doesn't exist
+2019-03-26 11:53:23.966  INFO 5508 --- [http-nio-8080-exec-6] c.i.c.a.c.ContentAuditController         : 用户拉取data record!
+2019-03-26 11:53:33.817  INFO 5508 --- [http-nio-8080-exec-8] c.i.c.a.c.ContentAuditController         : 用户拉取data record!
+2019-03-26 11:54:08.126  INFO 5508 --- [http-nio-8080-exec-7] c.i.c.a.c.ContentAuditController         : 用户拉取data record!
+2019-03-26 11:54:08.191  INFO 5508 --- [http-nio-8080-exec-7] c.i.c.a.s.impl.ContentAuditServiceImpl   : records.size()=1,update nums=1
+2019-03-26 11:54:08.327  INFO 5508 --- [http-nio-8080-exec-7] c.i.c.a.s.impl.ContentAuditServiceImpl   : dataRecord==={"appId":1,"created":1552894312000,"dataId":1,"dataType":1,"device":"iphone 6s","digest":"abcdefghijklmnopqrstuvwxyzabcdef","id":"10001","ip":"127.0.0.1","msgType":1,"nickName":"nick_name","operator":101,"publishDate":1552894273000,"status":5,"sysPolicy":"sysPolicy","sysStatus":1,"uid":"mytest","updated":1553543530000,"userLevel":1,"version":"v1.0.0"}
+2019-03-26 11:54:08.356  INFO 5508 --- [http-nio-8080-exec-7] c.i.c.a.s.impl.ContentAuditServiceImpl   : data==={created=2019-03-18 15:31:52.0, ip=127.0.0.1, type=2, version=v1.0.0, content=https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1258374994,840989973&fm=26&gp=0.jpg, uid=mytest, app_name=今日头条, data_id=1, nick_name=nick_name, name=字节跳动, data_type=1, msg_type=1, user_level=1, id=10001, device=iphone 6s, publish_date=2019-03-18 15:31:13.0, sys_status=1, sys_policy=sysPolicy, order=1}
+2019-03-26 13:46:40.288  INFO 5508 --- [http-nio-8080-exec-8] c.i.c.a.c.ContentAuditController         : 用户拉取data record!

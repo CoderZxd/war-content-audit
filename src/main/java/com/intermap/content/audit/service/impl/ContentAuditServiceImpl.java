@@ -55,7 +55,7 @@ public class ContentAuditServiceImpl implements IContentAuditService {
                 }
                 params.put("ids",ids);
                 int updateNums = dataRecordDao.updateDataRecordsToWaittingAuditStatus(params);
-                logger.info("records.size()="+records.size()+",update nums="+updateNums);
+                logger.info("records.size()={},update nums={}",records.size(),updateNums);
                 if(records.size() != updateNums){
                     logger.error("records.size()与updateNums不一致！！！！");
                 }
@@ -101,7 +101,7 @@ public class ContentAuditServiceImpl implements IContentAuditService {
                     params.put("tableName",CommonUtil.getTableName());
                     params.put("dataId",dataRecord.getDataId());
                     Map<String,String> data = dataRecordDao.getDataInfoByDataRecord(params);
-                    logger.info("data==="+data.toString());
+                    logger.info("data==={}",data.toString());
                     return data;
                 }
             }
@@ -111,6 +111,17 @@ public class ContentAuditServiceImpl implements IContentAuditService {
         return null;
     }
 
+
+    /**
+     * @FileName ContentAuditServiceImpl.java
+     * @ClassName ContentAuditServiceImpl
+     * @MethodName updateDataForAudit
+     * @Desc 更新审核状态
+     * @author zouxiaodong
+     * @date 2019/3/26 14:15
+     * @Params [params]
+     * @return java.lang.Integer
+     */
     @Override
     public Integer updateDataForAudit(Map<String, Object> params) {
         try {

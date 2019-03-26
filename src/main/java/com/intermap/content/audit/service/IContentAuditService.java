@@ -23,5 +23,15 @@ public interface IContentAuditService {
      */
     Object getDataForAuditFromDb();
 
+    /**
+     * @FileName IContentAuditService.java
+     * @ClassName IContentAuditService
+     * @MethodName updateDataForAudit
+     * @Desc 更新审核状态
+     * @author zouxiaodong
+     * @date 2019/3/26 14:15
+     * @Params [params]
+     * @return java.lang.Integer
+     */
     Integer updateDataForAudit(Map<String,Object> params);
 }

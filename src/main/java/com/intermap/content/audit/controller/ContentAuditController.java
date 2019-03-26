@@ -41,8 +41,7 @@ public class ContentAuditController {
 
     @RequestMapping("/updateDataForAudit")
     public ResponseDto updateDataForAudit(@RequestBody Map<String,Object> params) {
-
-        logger.info("更新data record!"+params);
+        logger.info("更新data record!params={}",params);
         if(AuditCode.Y.getCode().equals(params.get("code")) || AuditCode.P.getCode().equals(params.get("code"))){
             params.put("status", ConstantUtil.PASS_STATUS);
         }else{
@@ -50,6 +49,7 @@ public class ContentAuditController {
         }
         params.put("tableName", CommonUtil.getTableName());
         int num = contentAuditService.updateDataForAudit(params);
+        logger.info("更新的记录条数为:{}",num);
         return ResponseDto.success(num);
     }
 }

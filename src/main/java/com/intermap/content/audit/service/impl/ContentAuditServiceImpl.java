@@ -87,7 +87,7 @@ public class ContentAuditServiceImpl implements IContentAuditService {
                         params.put("tableName", CommonUtil.getTableName());
                         params.put("sysStatus", ConstantUtil.SYS_STATUS);
                         params.put("limitNum",ConstantUtil.LIMITNUM);
-                        params.put("excludeStatuses",ConstantUtil.NOT_WAITTING_AUTID_STATUS);
+                        params.put("excludeStatuses",ConstantUtil.EXCLUDE_STATUSES);
                         params.put("waitingAuditStatus",ConstantUtil.WAITTING_AUTID_STATUS);
                         recordsList = getDataRecordsListForDistribution(params);
                     }

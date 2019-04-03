@@ -75,3 +75,14 @@ CREATE TABLE `data_resource` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '入库时间',
   PRIMARY KEY (`data_id`,`order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+
+-- --------------------------------------------
+-- 测试数据
+-- --------------------------------------------
+INSERT INTO `code_app` VALUES ('1', '1', '今日头条', '1', null, null, '今日头条app', '2019-03-21 06:52:41');
+INSERT INTO `code_platform` VALUES ('1', '字节跳动', null, 'shakey', '1,2,3', null, '2019-03-18 15:37:47');
+INSERT INTO `data_record_20190328` VALUES ('1', '10001', 'mytest', '127.0.0.1', 'iphone 6s', '2019-03-18 15:31:13', '1', 'abcdefghijklmnopqrstuvwxyzabcdef', '2019-03-28 09:01:59', '2019-03-18 15:31:52', 'v1.0.0', '1', '1', 'sysPolicy', '10001', '1', '1', 'nick_name', '1', null);
+INSERT INTO `data_resource` VALUES ('1', '1', '2', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1258374994,840989973&fm=26&gp=0.jpg', '2019-03-27 02:09:52');
